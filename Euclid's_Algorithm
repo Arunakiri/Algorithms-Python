@@ -1,0 +1,27 @@
+# Finding GCD between two numbers
+# Consider (m > n)
+# m = q(n) + r  -- 'q' is quotient and 'r' is remainder
+# r = m % n
+# We only need to find the GCD between "n" and "m % n"
+# Note: "n" is always greater than "m % n"
+
+
+def gcd(m, n):
+    
+    if m % n == 0:
+        return n
+        
+    while m % n != 0:
+        m, n = n, m % n
+    
+    return n
+
+    # Recursion Method
+    # else:
+    #     return gcd(n, m % n)
+    
+
+a = 6546546
+b = 645446
+
+gcd(max(a,b), min(a,b))
