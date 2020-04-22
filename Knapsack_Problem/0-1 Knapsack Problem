@@ -1,0 +1,35 @@
+# Given weights and profits of n items, put these items in a knapsack (target = 15) to get the maximum total profit in the knapsack. 
+# "target" represents knapsack capacity, 
+# Find the maximum profit such that sum of the weights is smaller than or equal to "target". 
+# Note: You cannot break an item, either pick the complete item, or don’t pick it (0-1 property).
+
+target = 8
+
+weights = [3, 4, 6, 5]
+profits = [2, 3, 1, 4]
+
+n = len(weights)
+
+ways = [[0 for _ in range(target+1)] for _ in range(n+1)]
+
+for i in range(1, n+1):
+    for j in range(1, target+1):
+        if j >= weights[i-1]:
+            ways[i][j] = max(ways[i-1][j], profits[i-1] + ways[i-1][j-weights[i-1]])
+        else:
+            ways[i][j] = ways[i-1][j]
+
+res = ways[i][j]
+
+print(res)
+
+d = []
+
+while n > 0:
+    if res not in ways[n-1]:
+        res -= profits[n-1]
+        d.append(weights[n-1])
+    
+    n -= 1
+    
+print(d)
