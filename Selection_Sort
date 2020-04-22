@@ -20,4 +20,4 @@ def Selection_Sort(arr):
 a = '9 8 7 6 5 4 3 2 1'
 arr = list(map(int, a.split()))
 
-Selection_sort(arr)
+Selection_Sort(arr)
