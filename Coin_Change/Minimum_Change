@@ -1,0 +1,12 @@
+# Provide the change with minimum number of coin denominations.
+
+target = 11
+coins = [1, 5, 6, 9]
+
+ways = [0] + [target+1]*target
+
+for coin in coins:
+    for i in range(coin, target+1):
+        ways[i] = min(ways[i], 1 + ways[i-coin])
+        
+print(ways[-1])  
